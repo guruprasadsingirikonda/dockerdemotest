@@ -22,7 +22,7 @@ jobs:
         CR_PAT: ${{ secrets.CR_PAT }}    
     
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-nginx-image:latest
+      run: docker build . --file Dockerfile --tag ghcr.io/guruprasadsingirikonda/my-nginx-image:latest
           
     - name: pushing the image  
       run: docker push ghcr.io/guruprasadsingirikonda/my-nginx-image:latest
