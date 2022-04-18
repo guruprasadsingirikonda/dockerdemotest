@@ -15,12 +15,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-nginx-image:$(date +%s)
+      run: docker build . --file Dockerfile --tag my-nginx-image:latest
       
     - name: Build the hello-world Docker image
       run: |
         echo $CR_PAT | docker login ghcr.io -u guruprasadsingirikonda --password-stdin
       env:
-        CR_PAT: ${{ secrets.CR_PAT }}      
+        CR_PAT: ${{ secrets.CR_PAT }}    
+    - name: pushing the image  
+      run: docker push ghcr.io/guruprasadsingirikonda/my-nginx-image:latest
       
       
